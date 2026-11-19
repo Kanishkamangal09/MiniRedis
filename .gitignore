@@ -1,0 +1,16 @@
+# Maven build output
+target/
+
+# IDE files (keep .vscode/settings.json shared, ignore the rest)
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# OS files
+.DS_Store
+
+# Logs and local data files produced while running the server
+*.log
+data/

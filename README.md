@@ -8,7 +8,7 @@ persistence and the RESP2 protocol.
 
 ## Status
 
-Phase 1 (in-memory storage engine) in progress. Nothing is runnable over the network yet.
+Phase 1 complete: in-memory storage engine (set, get, delete, exists) with unit tests. Nothing is runnable over the network yet.
 
 ## Requirements
 

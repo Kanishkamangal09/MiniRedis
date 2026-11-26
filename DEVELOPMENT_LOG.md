@@ -2,26 +2,28 @@
 
 ## Current phase
 
-Phase 0 complete (environment + scaffolding). Phase 1 (storage engine) started.
+Phase 1 (storage engine) implemented and tested. Next: Phase 2 (command processor).
 
 ## Environment (verified 2026-11-19)
 
 - macOS, Apple Silicon (M4)
-- JDK 24.0.2 (Homebrew) — compiles with `--release 21`
-- Maven: NOT yet installed (install with `brew install maven`)
+- JDK 27 (Homebrew), compiling with `--release 21`
+- Maven 3.10.1 installed via Homebrew
 - VS Code with Extension Pack for Java + GitLens
 
 ## Completed
 
 - [x] Project scaffolding: pom.xml, .gitignore, README, docs/, src layout
 - [x] Verified javac compiles and runs a Java file
+- [x] Maven installed, `mvn test` works
+- [x] MiniRedis is its own git repository
+- [x] Phase 1: `MemoryStore` with set/get/delete/exists/size and input validation
+- [x] Phase 1: `MemoryStoreTest`, 15 tests (verified 2026-11-26)
 
 ## Pending
 
-- [ ] Install Maven and run `mvn test` successfully
-- [ ] Fix git: the home directory is currently a git repository; MiniRedis needs its own repo
-- [ ] Phase 1: implement `MemoryStore` (set, get, delete, exists)
-- [ ] Phase 1: write `MemoryStoreTest` with JUnit 5
+- [ ] Commit Phase 1 work
+- [ ] Phase 2: CommandParser (text line -> tokens) and CommandExecutor
 
 ## Concepts learned
 
@@ -42,8 +44,8 @@ None yet.
 
 ## Test status
 
-No tests written yet.
+15 unit tests in MemoryStoreTest, all passing (mvn test, 2026-11-26).
 
 ## Next recommended task
 
-Implement `com.miniredis.store.MemoryStore` yourself (see assignment in chat), then write tests.
+Commit, then start Phase 2: the command processor that turns "SET name alice" into a MemoryStore call.

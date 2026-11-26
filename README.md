@@ -8,7 +8,20 @@ persistence and the RESP2 protocol.
 
 ## Status
 
-Phase 1 complete: in-memory storage engine (set, get, delete, exists) with unit tests. Nothing is runnable over the network yet.
+Phase 2 complete: storage engine plus a command processor. Nothing is runnable over the network yet.
+
+## Supported commands
+
+| Command           | Reply                              |
+|-------------------|------------------------------------|
+| `PING`            | `PONG`                             |
+| `SET key value`   | `OK`                               |
+| `GET key`         | the value, or `(nil)`              |
+| `DEL key`         | `1` if removed, `0` if missing     |
+| `EXISTS key`      | `1` or `0`                         |
+| `DBSIZE`          | number of keys                     |
+
+Command names are case-insensitive. Errors are replied as `ERR <message>`.
 
 ## Requirements
 

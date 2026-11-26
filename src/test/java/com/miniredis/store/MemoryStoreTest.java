@@ -1,7 +1,4 @@
 package com.miniredis.store;
-// ^ Same package as MemoryStore. This is deliberate: tests in the same package
-//   are allowed to see package-private things, and it mirrors the folder
-//   structure under src/test/java instead of src/main/java.
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,26 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //   Assertions.assertEquals(...). An assertion is a check: if it is false,
 //   the test FAILS and JUnit prints what was expected versus what it got.
 
-/**
- * Unit tests for {@link MemoryStore}.
- *
- * Each test creates a fresh store, performs one scenario, and checks the result.
- * A "unit test" tests one class in isolation, with no network, no files, no
- * other components.
- */
+
 class MemoryStoreTest {
-// ^ No "public" needed: JUnit 5 finds test classes regardless. Keeping it
-//   package-private is the JUnit 5 convention.
-
     private MemoryStore store;
-    // ^ A field shared by all tests in this class. Each test gets its own
-    //   fresh instance, see below.
-
     @BeforeEach
     void setUp() {
-    // ^ @BeforeEach: JUnit runs this method before EVERY @Test method. So each
-    //   test starts with a brand-new empty store and cannot be affected by
-    //   what another test did. Tests must be independent of each other.
         store = new MemoryStore();
     }
 
@@ -114,14 +96,6 @@ class MemoryStoreTest {
     @Test
     void setRejectsNullKey() {
         assertThrows(IllegalArgumentException.class, () -> store.set(null, "x"));
-        // ^ assertThrows(EXCEPTION TYPE, CODE TO RUN).
-        //   The second argument "() -> store.set(null, "x")" is a LAMBDA: a
-        //   tiny anonymous function with no parameters "()" whose body is the
-        //   expression after "->". We hand the code to JUnit WITHOUT running it
-        //   ourselves; JUnit runs it inside a try/catch and passes only if the
-        //   named exception was thrown. If we simply wrote store.set(null,"x")
-        //   as a normal statement, the exception would escape and the test
-        //   would ERROR instead of PASS.
     }
 
     @Test
